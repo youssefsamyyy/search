@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Widget Test</title>
+
+    <!-- Widget JavaScript bundle -->
+    <script src="https://cloud.google.com/ai/gen-app-builder/client?hl=en_US"></script>
+</head>
+<body>
+
+    <h1>Search Widget Test</h1>
+
+    <!-- Input field to trigger search -->
+    <input type="text" id="searchWidgetTrigger" placeholder="Search here">
+    <button onclick="startSearch()">Ask ACCD 🔍</button>
+
+    <!-- Search Widget -->
+    <gen-search-widget configId="42d55a24-049c-41ff-8908-6bbe1e20470b" triggerId="searchWidgetTrigger"></gen-search-widget>
+
+    <script>
+        function startSearch() {
+            let searchWidget = document.querySelector("gen-search-widget");
+            let searchInput = document.getElementById("searchWidgetTrigger").value;
+
+            if (searchWidget && searchInput) {
+                searchWidget.setAttribute("query", searchInput);
+                searchWidget.search(); // Triggers the search
+            } else {
+                alert("Please enter a search query.");
+            }
+        }
+    </script>
+
+</body>
+</html>
